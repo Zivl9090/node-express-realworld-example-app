@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import auth from './auth';
 import { createUser, getCurrentUser, login, updateUser } from './auth.service';
+import validate from '../../middleware/validate';
+import { registerSchema, loginSchema, updateSchema } from '../../middleware/schemas/user.schemas';
 
 const router = Router();
 
@@ -11,7 +13,7 @@ const router = Router();
  * @bodyparam user User
  * @returns user User
  */
-router.post('/users', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/users', validate(registerSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await createUser({ ...req.body.user, demo: false });
     res.status(201).json({ user });
@@ -27,7 +29,7 @@ router.post('/users', async (req: Request, res: Response, next: NextFunction) =>
  * @bodyparam user User
  * @returns user User
  */
-router.post('/users/login', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/users/login', validate(loginSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await login(req.body.user);
     res.json({ user });
@@ -58,7 +60,7 @@ router.get('/user', auth.required, async (req: Request, res: Response, next: Nex
  * @bodyparam user User
  * @returns user User
  */
-router.put('/user', auth.required, async (req: Request, res: Response, next: NextFunction) => {
+router.put('/user', auth.required, validate(updateSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = await updateUser(req.body.user, req.auth?.user?.id);
     res.json({ user });

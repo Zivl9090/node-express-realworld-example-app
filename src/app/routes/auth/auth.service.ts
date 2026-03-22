@@ -36,22 +36,7 @@ const checkUserUniqueness = async (email: string, username: string) => {
 };
 
 export const createUser = async (input: RegisterInput): Promise<RegisteredUser> => {
-  const email = input.email?.trim();
-  const username = input.username?.trim();
-  const password = input.password?.trim();
-  const { image, bio, demo } = input;
-
-  if (!email) {
-    throw new HttpException(422, { errors: { email: ["can't be blank"] } });
-  }
-
-  if (!username) {
-    throw new HttpException(422, { errors: { username: ["can't be blank"] } });
-  }
-
-  if (!password) {
-    throw new HttpException(422, { errors: { password: ["can't be blank"] } });
-  }
+  const { email, username, password, image, bio, demo } = input;
 
   await checkUserUniqueness(email, username);
 
@@ -82,16 +67,7 @@ export const createUser = async (input: RegisterInput): Promise<RegisteredUser> 
 };
 
 export const login = async (userPayload: any) => {
-  const email = userPayload.email?.trim();
-  const password = userPayload.password?.trim();
-
-  if (!email) {
-    throw new HttpException(422, { errors: { email: ["can't be blank"] } });
-  }
-
-  if (!password) {
-    throw new HttpException(422, { errors: { password: ["can't be blank"] } });
-  }
+  const { email, password } = userPayload;
 
   const user = await prisma.user.findUnique({
     where: {
