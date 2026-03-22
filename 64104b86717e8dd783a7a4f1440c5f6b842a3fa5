@@ -1,0 +1,31 @@
+src/app/routes/auth/auth.controller.ts
+  874a18132692d00c 4-5,16,32,63
+src/app/middleware/validate.ts
+  874a18132692d00c 1-25
+src/app/middleware/schemas/user.schemas.ts
+  874a18132692d00c 1-48
+src/app/routes/auth/auth.service.ts
+  874a18132692d00c 39,70
+src/tests/middleware/validate.test.ts
+  874a18132692d00c 1-198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.17",
+  "base_commit_sha": "64104b86717e8dd783a7a4f1440c5f6b842a3fa5",
+  "prompts": {
+    "874a18132692d00c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9de420d-0bb1-454e-bdb4-85cfb8ef5e2b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "ziv-codefresh <ziv@codefresh.io>",
+      "messages": [],
+      "total_additions": 280,
+      "total_deletions": 97,
+      "accepted_lines": 278,
+      "overriden_lines": 0
+    }
+  }
+}
