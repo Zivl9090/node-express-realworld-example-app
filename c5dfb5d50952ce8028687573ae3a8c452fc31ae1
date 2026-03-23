@@ -1,0 +1,56 @@
+src/tests/middleware/validate.test.ts
+  308b68bc4b5219fe 4,199-365
+src/app/routes/article/article.controller.ts
+  308b68bc4b5219fe 3,73,176
+  7087fd3ef291f761 4
+  a1d3d13b6e231789 115
+src/app/middleware/schemas/article.schemas.ts
+  7087fd3ef291f761 21-29
+  308b68bc4b5219fe 1-20,30-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.17",
+  "base_commit_sha": "c5dfb5d50952ce8028687573ae3a8c452fc31ae1",
+  "prompts": {
+    "308b68bc4b5219fe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0056bfa9-1686-4fe8-aade-859d4c34bff6",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "ziv-codefresh <ziv@codefresh.io>",
+      "messages": [],
+      "total_additions": 200,
+      "total_deletions": 17,
+      "accepted_lines": 199,
+      "overriden_lines": 0
+    },
+    "7087fd3ef291f761": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a177cbb-b0d6-4a74-adad-ae5ff0bd8c51",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "ziv-codefresh <ziv@codefresh.io>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 1,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    },
+    "a1d3d13b6e231789": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "37939b52-bc5f-4c09-ac58-f7d67b0a6f6c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "ziv-codefresh <ziv@codefresh.io>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
