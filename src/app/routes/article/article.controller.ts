@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import auth from '../auth/auth';
+import validate from '../../middleware/validate';
+import { createArticleSchema, updateArticleSchema, addCommentSchema } from '../../middleware/schemas/article.schemas';
 import {
   addComment,
   createArticle,
@@ -68,7 +70,7 @@ router.get(
  * @bodyparam  tagList list of tags
  * @returns article created article
  */
-router.post('/articles', auth.required, async (req: Request, res: Response, next: NextFunction) => {
+router.post('/articles', auth.required, validate(createArticleSchema), async (req: Request, res: Response, next: NextFunction) => {
   try {
     const article = await createArticle(req.body.article, req.auth?.user?.id);
     res.status(201).json({ article });
@@ -110,6 +112,7 @@ router.get(
 router.put(
   '/articles/:slug',
   auth.required,
+  validate(updateArticleSchema),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const article = await updateArticle(req.body.article, req.params.slug, req.auth?.user?.id);
@@ -170,6 +173,7 @@ router.get(
 router.post(
   '/articles/:slug/comments',
   auth.required,
+  validate(addCommentSchema),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const comment = await addComment(req.body.comment.body, req.params.slug, req.auth?.user?.id);

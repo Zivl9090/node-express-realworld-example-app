@@ -163,18 +163,6 @@ export const createArticle = async (article: any, id: number) => {
   const { title, description, body, tagList } = article;
   const tags = Array.isArray(tagList) ? tagList : [];
 
-  if (!title) {
-    throw new HttpException(422, { errors: { title: ["can't be blank"] } });
-  }
-
-  if (!description) {
-    throw new HttpException(422, { errors: { description: ["can't be blank"] } });
-  }
-
-  if (!body) {
-    throw new HttpException(422, { errors: { body: ["can't be blank"] } });
-  }
-
   const slug = `${slugify(title)}-${id}`;
 
   const existingTitle = await prisma.article.findUnique({
@@ -471,10 +459,6 @@ export const getCommentsByArticle = async (slug: string, id?: number) => {
 };
 
 export const addComment = async (body: string, slug: string, id: number) => {
-  if (!body) {
-    throw new HttpException(422, { errors: { body: ["can't be blank"] } });
-  }
-
   const article = await prisma.article.findUnique({
     where: {
       slug,
